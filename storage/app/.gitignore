@@ -1,0 +1,5 @@
+*
+!private/
+!public/
+!.gitignore
+!demo_hall8_database_A-F.csv
