@@ -51,7 +51,7 @@ class AttendanceController extends Controller
             Gate::authorize('checkIn', $locked);
             if ($locked->status !== 'open' || now()->lt($locked->starts_at) || now()->gt($locked->ends_at)
                 || ! $locked->dorm()->where('is_active', true)->exists()) {
-                throw ValidationException::withMessages(['activity' => 'กิจกรรมนี้ยังไม่เปิดเช็กชื่อ หรือพ้นเวลาเช็กชื่อแล้ว']);
+                throw ValidationException::withMessages(['activity' => 'กิจกรรมนี้ยังไม่เปิดเช็คชื่อ หรือพ้นเวลาเช็คชื่อแล้ว']);
             }
             $member = User::where('qr_token', $data['qr_token'])->lockForUpdate()->first();
             if (! $member || ! $member->is_active || ! $member->student_id || ! in_array($member->role, ['superadmin', 'admin', 'user'], true) || $member->dorm_id !== (int) $locked->dorm_id) {
@@ -59,7 +59,7 @@ class AttendanceController extends Controller
             }
             abort_if($member->role === 'superadmin' && $request->user()->role !== 'superadmin', 403);
             if ($locked->attendances()->where('user_id', $member->id)->exists()) {
-                abort(409, 'สมาชิกคนนี้เช็กชื่อกิจกรรมนี้แล้ว');
+                abort(409, 'สมาชิกคนนี้เช็คชื่อกิจกรรมนี้แล้ว');
             }
             $attendance = Attendance::create([
                 'activity_id' => $locked->id, 'user_id' => $member->id,
@@ -79,9 +79,10 @@ class AttendanceController extends Controller
                 'new_values' => ['user_id' => $member->id, 'activity_id' => $locked->id, 'score_history_id' => $history->id, 'score' => $history->score, 'academic_year_id' => (int) $locked->academic_year_id, 'total_score' => $oldTotal + $history->score],
             ]);
 
-            return ['message' => 'เช็กชื่อสำเร็จ', 'name' => $member->name, 'student_id' => $member->student_id, 'score' => $history->score];
+            return ['message' => 'เช็คชื่อสำเร็จ', 'name' => $member->name, 'student_id' => $member->student_id, 'score' => $history->score];
         }, 3);
 
         return response()->json($result, 201);
     }
 }
+

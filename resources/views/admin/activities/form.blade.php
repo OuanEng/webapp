@@ -19,7 +19,10 @@
         <label class="field">สถานะ<select name="status" required>
             @foreach (App\Models\Activity::STATUS_LABELS as $value => $label)<option value="{{ $value }}" @selected(old('status', $activity->status) === $value)>{{ $label }}</option>@endforeach
         </select></label>
-        <p>เช็กชื่อได้เฉพาะสถานะเปิดเช็กชื่อและอยู่ในช่วงเวลาที่กำหนด เมื่อมีผู้เข้าร่วมแล้วจะเปลี่ยนหอพัก ปีการศึกษา และคะแนนไม่ได้</p>
+        <p>เช็คชื่อได้เฉพาะสถานะเปิดเช็คชื่อและอยู่ในช่วงเวลาที่กำหนด เมื่อมีผู้เข้าร่วมแล้วจะเปลี่ยนหอพัก ปีการศึกษา และคะแนนไม่ได้</p>
         <button type="submit">บันทึกข้อมูล</button><a href="{{ route('admin.activities.index') }}">กลับรายการ</a>
     </form>
 @endsection
+
+
+

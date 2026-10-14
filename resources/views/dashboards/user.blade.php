@@ -32,8 +32,8 @@
 </div>
 <section class="dashboard-section dashboard-qr-section">
         <h2>QR ของฉัน</h2>
-        <img src="{{ route('member.qr.image') }}" alt="QR ประจำตัวสำหรับเช็กชื่อกิจกรรม" width="220" height="220" style="max-width:100%;height:auto">
-        <p>แสดง QR ให้เจ้าหน้าที่เช็กชื่อกิจกรรม</p><a href="{{ route('member.qr') }}">เปิด QR ขนาดใหญ่</a>
+        <img src="{{ route('member.qr.image') }}" alt="QR ประจำตัวสำหรับเช็คชื่อกิจกรรม" width="220" height="220" style="max-width:100%;height:auto">
+        <p>แสดง QR ให้เจ้าหน้าที่เช็คชื่อกิจกรรม</p><a href="{{ route('member.qr') }}">เปิด QR ขนาดใหญ่</a>
     </section>
 </div>
     <section class="dashboard-section">
@@ -58,5 +58,6 @@
         <a href="{{ route('member.finance', request()->only('academic_year_id')) }}">ดูการเงินที่เปิดเผย</a>
     </section>
 @endsection
+
 
 

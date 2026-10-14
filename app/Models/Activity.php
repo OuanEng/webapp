@@ -12,7 +12,7 @@ class Activity extends Model
 {
     public const STATUSES = ['draft', 'open', 'closed', 'cancelled'];
 
-    public const STATUS_LABELS = ['draft' => 'ฉบับร่าง', 'open' => 'เปิดเช็กชื่อ', 'closed' => 'ปิดเช็กชื่อ', 'cancelled' => 'ยกเลิก'];
+    public const STATUS_LABELS = ['draft' => 'ฉบับร่าง', 'open' => 'เปิดเช็คชื่อ', 'closed' => 'ปิดเช็คชื่อ', 'cancelled' => 'ยกเลิก'];
 
     public const AUDIT_FIELDS = ['dorm_id', 'academic_year_id', 'title', 'description', 'starts_at', 'ends_at', 'location', 'score', 'status'];
 
@@ -50,3 +50,4 @@ class Activity extends Model
         return $this->hasMany(ScoreHistory::class);
     }
 }
+

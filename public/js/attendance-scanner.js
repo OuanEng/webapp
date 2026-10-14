@@ -27,7 +27,7 @@
             const data = await response.json();
             if (!response.ok) {
                 const message = data.errors ? Object.values(data.errors).flat().join(' ') : data.message;
-                throw new Error(message || 'เช็กชื่อไม่สำเร็จ กรุณาลองอีกครั้ง');
+                throw new Error(message || 'เช็คชื่อไม่สำเร็จ กรุณาลองอีกครั้ง');
             }
             return data;
         } finally {
@@ -44,7 +44,7 @@
             pendingToken = token;
             member.textContent = `${data.student_id} / ${data.name}`;
             preview.hidden = false;
-            status.textContent = 'ตรวจชื่อกับเจ้าของ QR แล้วกดยืนยันเช็กชื่อ';
+            status.textContent = 'ตรวจชื่อกับเจ้าของ QR แล้วกดยืนยันเช็คชื่อ';
         } catch (error) {
             status.textContent = error.name === 'AbortError' ? 'การเชื่อมต่อหมดเวลา กรุณาลองใหม่' : error.message;
         } finally {
@@ -109,7 +109,7 @@
         busy = true;
         confirm.disabled = true;
         cancel.disabled = true;
-        status.textContent = 'กำลังบันทึกเช็กชื่อ…';
+        status.textContent = 'กำลังบันทึกเช็คชื่อ…';
         try {
             const data = await request(root.dataset.url, pendingToken);
             status.textContent = `${data.message}: ${data.name} / ${data.score} คะแนน`;
@@ -135,3 +135,4 @@
         setTimeout(() => { busy = false; }, 2500);
     });
 })();
+

@@ -16,3 +16,5 @@
         <a href="{{ route('admin.activities.index') }}">กลับรายการ</a>
     </div>
 @endsection
+
+

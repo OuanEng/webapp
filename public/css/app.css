@@ -98,4 +98,3 @@ pre { white-space: pre-wrap; overflow-wrap: anywhere; }
 .dashboard-left-column .dashboard-section:last-child { align-self: stretch; }
 @media (max-width: 600px) { .dashboard-left-column { grid-template-rows: auto auto; gap: 15px; } }
 
-

@@ -12,7 +12,7 @@ class AuditLog extends Model
     public const UPDATED_AT = null;
 
     public const ACTION_LABELS = [
-        'score.adjusted' => 'ปรับคะแนน', 'attendance.created' => 'เช็กชื่อและเพิ่มคะแนน',
+        'score.adjusted' => 'ปรับคะแนน', 'attendance.created' => 'เช็คชื่อและเพิ่มคะแนน',
         'user.role_changed' => 'เปลี่ยนสิทธิ์ Admin', 'setup.superadmin' => 'ตั้งค่า SuperAdmin',
         'finance.created' => 'เพิ่มการเงิน', 'finance.updated' => 'แก้ไขการเงิน', 'finance.voided' => 'ยกเลิกการเงิน',
         'membership.synced' => 'อัปเดตค่าส่วนกลาง', 'repair.created' => 'แจ้งซ่อม', 'repair.status_updated' => 'เปลี่ยนสถานะงานซ่อม',
@@ -83,3 +83,4 @@ class AuditLog extends Model
         return $this->belongsTo(User::class, 'actor_id');
     }
 }
+
