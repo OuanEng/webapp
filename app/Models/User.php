@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 
 #[Fillable(['name', 'email', 'password'])]
 #[Hidden(['password', 'remember_token', 'google_id', 'qr_token'])]
@@ -38,6 +39,42 @@ class User extends Authenticatable
             'dorm_id' => 'integer',
             'room_id' => 'integer',
         ];
+    }
+
+    public const STARTING_SCORE_REASON = 'คะแนนเริ่มต้นสมาชิก';
+
+    protected static function booted(): void
+    {
+        static::creating(function (User $user): void {
+            if (! $user->password) {
+                $user->password = 'password';
+            }
+        });
+
+        static::created(function (User $user): void {
+            $user->grantStartingScore();
+        });
+    }
+
+    public function grantStartingScore(): void
+    {
+        $year = AcademicYear::where('year', config('dorm.academic_year'))->first()
+            ?? AcademicYear::where('is_active', true)->first();
+        if (! $year) {
+            return;
+        }
+
+        DB::transaction(function () use ($year): void {
+            $member = static::lockForUpdate()->findOrFail($this->id);
+            if (! $member->scoreHistories()->where('reason', self::STARTING_SCORE_REASON)->exists()) {
+                $member->scoreHistories()->create([
+                    'academic_year_id' => $year->id,
+                    'score' => 10,
+                    'reason' => self::STARTING_SCORE_REASON,
+                    'created_by' => $member->id,
+                ]);
+            }
+        }, 3);
     }
 
     public function dorm(): BelongsTo

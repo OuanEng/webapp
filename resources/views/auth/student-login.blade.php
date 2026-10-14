@@ -26,8 +26,8 @@
             <input id="password" name="password" type="password" autocomplete="current-password" maxlength="255" required></div>
             <button class="login-submit" type="submit">เข้าสู่ระบบ</button>
         </form>
+        <p class="footer"><a href="{{ route('password.request') }}">ลืมรหัสผ่าน?</a></p>
         <p class="footer">ระบบจัดการหอพักนักศึกษา มหาวิทยาลัยขอนแก่น</p>
     </main>
 </body>
 </html>
-

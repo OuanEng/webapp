@@ -12,17 +12,14 @@
         <label class="field">ปีการศึกษา<select name="academic_year_id" required>
             @foreach ($years as $year)<option value="{{ $year->id }}" @selected(old('academic_year_id', $activity->academic_year_id) == $year->id)>{{ $year->year }}</option>@endforeach
         </select></label>
-        <label class="field">เริ่ม (เวลาไทย)<input type="datetime-local" name="starts_at" value="{{ old('starts_at', $activity->starts_at?->timezone('Asia/Bangkok')->format('Y-m-d\TH:i')) }}" required></label>
-        <label class="field">สิ้นสุด (เวลาไทย)<input type="datetime-local" name="ends_at" value="{{ old('ends_at', $activity->ends_at?->timezone('Asia/Bangkok')->format('Y-m-d\TH:i')) }}" required></label>
+        <label class="field">เริ่ม<input type="datetime-local" name="starts_at" value="{{ old('starts_at', $activity->starts_at?->timezone('Asia/Bangkok')->format('Y-m-d\TH:i')) }}" required></label>
+        <label class="field">สิ้นสุด<input type="datetime-local" name="ends_at" value="{{ old('ends_at', $activity->ends_at?->timezone('Asia/Bangkok')->format('Y-m-d\TH:i')) }}" required></label>
         <label class="field">สถานที่<input name="location" value="{{ old('location', $activity->location) }}" required maxlength="255"></label>
         <label class="field">คะแนน<input type="number" name="score" value="{{ old('score', $activity->score) }}" min="0" max="10000" required></label>
         <label class="field">สถานะ<select name="status" required>
             @foreach (App\Models\Activity::STATUS_LABELS as $value => $label)<option value="{{ $value }}" @selected(old('status', $activity->status) === $value)>{{ $label }}</option>@endforeach
         </select></label>
         <p>เช็คชื่อได้เฉพาะสถานะเปิดเช็คชื่อและอยู่ในช่วงเวลาที่กำหนด เมื่อมีผู้เข้าร่วมแล้วจะเปลี่ยนหอพัก ปีการศึกษา และคะแนนไม่ได้</p>
-        <button type="submit">บันทึกข้อมูล</button><a href="{{ route('admin.activities.index') }}">กลับรายการ</a>
+        <button type="submit">บันทึกข้อมูล</button><a class="activity-action-button" href="{{ route('admin.activities.index') }}">กลับรายการ</a>
     </form>
 @endsection
-
-
-

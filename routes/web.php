@@ -26,6 +26,7 @@ Route::get('/', function () {
 });
 
 Route::middleware('guest')->group(function () {
+    Route::view('/forgot-password', 'auth.forgot-password')->name('password.request');
     Route::get('/login', [StudentLoginController::class, 'create'])->name('login');
     Route::post('/auth/student', [StudentLoginController::class, 'store'])->middleware('throttle:10,1')->name('auth.student');
     Route::post('/auth/temporary', [TemporaryLoginController::class, 'store'])
@@ -40,6 +41,8 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['auth', 'active', 'role:superadmin,admin,user'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/me/password', [App\Http\Controllers\Member\PasswordController::class, 'edit'])->name('member.password.edit');
+    Route::put('/me/password', [App\Http\Controllers\Member\PasswordController::class, 'update'])->middleware('throttle:10,1')->name('member.password.update');
     Route::get('/me', [ProfileController::class, 'show'])->name('member.profile');
     Route::get('/me/qr', [QrController::class, 'show'])->name('member.qr');
     Route::get('/me/qr/image', [QrController::class, 'image'])->name('member.qr.image');
@@ -71,9 +74,10 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'active', 'role:supe
 });
 
 Route::prefix('superadmin')->name('superadmin.')->middleware(['auth', 'active', 'role:superadmin'])->group(function () {
+    Route::get('/users/{user}/password', [App\Http\Controllers\SuperAdmin\StudentPasswordController::class, 'edit'])->name('users.password.edit');
+    Route::put('/users/{user}/password', [App\Http\Controllers\SuperAdmin\StudentPasswordController::class, 'update'])->middleware('throttle:10,1')->name('users.password.update');
     Route::get('/admins', [AdminRoleController::class, 'index'])->name('admins.index');
     Route::get('/audit-logs', [AuditLogController::class, 'index'])->name('audit.index');
     Route::get('/audit-logs/{auditLog}', [AuditLogController::class, 'show'])->name('audit.show');
     Route::patch('/users/{user}/role', [AdminRoleController::class, 'update'])->name('users.role');
 });
-

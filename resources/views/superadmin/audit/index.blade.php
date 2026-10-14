@@ -13,11 +13,11 @@
             @foreach (App\Models\AuditLog::TARGET_LABELS as $value => $label)<option value="{{ $value }}" @selected(request('target_type') === $value)>{{ $label }}</option>@endforeach
         </select></label>
         <label>รหัส Target<input type="number" name="target_id" value="{{ request('target_id') }}" min="1"></label>
-        <label>ตั้งแต่ (เวลาไทย)<input type="date" name="date_from" value="{{ request('date_from') }}"></label>
-        <label>ถึง (เวลาไทย)<input type="date" name="date_to" value="{{ request('date_to') }}"></label>
+        <label>ตั้งแต่<input type="date" name="date_from" value="{{ request('date_from') }}"></label>
+        <label>ถึง<input type="date" name="date_to" value="{{ request('date_to') }}"></label>
         <button>ค้นหา / กรอง</button><a href="{{ route('superadmin.audit.index') }}">ล้างตัวกรอง</a>
     </form>
-    <div class="table-wrapper"><table><thead><tr><th>วัน / เวลา (เวลาไทย)</th><th>ผู้ดำเนินการ</th><th>Action</th><th>Target</th><th>ข้อมูล</th></tr></thead><tbody>
+    <div class="table-wrapper"><table><thead><tr><th>วัน / เวลา</th><th>ผู้ดำเนินการ</th><th>Action</th><th>Target</th><th>ข้อมูล</th></tr></thead><tbody>
         @forelse ($logs as $log)
             <tr><td>{{ $log->created_at->timezone('Asia/Bangkok')->format('d/m/Y H:i:s') }}</td><td>{{ $log->actor_snapshot['name'] ?? $log->actor?->name ?? 'ระบบ / ไม่พบบัญชีเดิม' }}</td><td>{{ $log->actionLabel() }}</td><td>{{ App\Models\AuditLog::TARGET_LABELS[$log->target_type] ?? $log->target_type }} #{{ $log->target_id }}</td><td><a href="{{ route('superadmin.audit.show', $log) }}">Old / New Data</a></td></tr>
         @empty

@@ -12,7 +12,7 @@
         <dt>ผู้บันทึก</dt><dd>{{ $finance->creator->name }}</dd>
         @if ($finance->status === 'voided')
             <dt>เหตุผลยกเลิก</dt><dd style="white-space:pre-wrap">{{ $finance->void_reason }}</dd>
-            <dt>ผู้ยกเลิก / เวลา (เวลาไทย)</dt><dd>{{ $finance->voidedBy->name }} / {{ $finance->voided_at->timezone('Asia/Bangkok')->format('d/m/Y H:i') }}</dd>
+            <dt>ผู้ยกเลิก / เวลา</dt><dd>{{ $finance->voidedBy->name }} / {{ $finance->voided_at->timezone('Asia/Bangkok')->format('d/m/Y H:i') }}</dd>
         @endif
     </dl>
     @if ($finance->status !== 'voided')

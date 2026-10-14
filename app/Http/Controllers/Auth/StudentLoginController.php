@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 
@@ -30,7 +31,7 @@ class StudentLoginController extends Controller
             ->whereIn('role', ['superadmin', 'admin', 'user'])
             ->first();
 
-        if (! hash_equals('password', $validated['password']) || ! $user) {
+        if (! $user || ! Hash::check($validated['password'], $user->password ?? '')) {
             throw ValidationException::withMessages([
                 'student_id' => 'รหัสนักศึกษาหรือรหัสผ่านไม่ถูกต้อง หรือบัญชีถูกระงับ',
             ]);

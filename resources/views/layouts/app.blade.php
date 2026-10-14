@@ -15,6 +15,7 @@
         <nav id="main-navigation" class="main-navigation" aria-label="เมนูหลัก">
             <p class="nav-group-label">การใช้งานของฉัน</p><a href="{{ route('dashboard') }}" @if(request()->routeIs('dashboard')) aria-current="page" @endif>หน้าหลัก</a>
             <a href="{{ route('member.profile') }}" @if(request()->routeIs('member.profile')) aria-current="page" @endif>ข้อมูลของฉัน</a>
+            <a href="{{ route('member.password.edit') }}" @if(request()->routeIs('member.password.*')) aria-current="page" @endif>เปลี่ยนรหัสผ่าน</a>
             <a href="{{ route('member.activities') }}" @if(request()->routeIs('member.activities')) aria-current="page" @endif>กิจกรรม</a>
             <a href="{{ route('member.qr') }}" @if(request()->routeIs('member.qr')) aria-current="page" @endif>QR ของฉัน</a>
             <a href="{{ route('member.scores') }}" @if(request()->routeIs('member.scores')) aria-current="page" @endif>คะแนนของฉัน</a>
@@ -51,7 +52,3 @@
     </main></div></div>
 </body>
 </html>
-
-
-
-

@@ -17,7 +17,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias(['active' => EnsureUserIsActive::class, 'role' => EnsureRole::class]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
-        $exceptions->dontFlash(['credential', 'password', 'password_confirmation', 'current_password']);
+        $exceptions->dontFlash(['credential', 'password', 'password_confirmation', 'current_password', 'current_password_confirmation', 'new_password', 'new_password_confirmation']);
         $exceptions->shouldRenderJsonWhen(
             fn (Request $request) => $request->is('api/*') || $request->expectsJson(),
         );

@@ -16,9 +16,7 @@
         <label class="field">เบอร์โทรศัพท์<input type="tel" name="phone" value="{{ old('phone', $member->phone) }}" required maxlength="30"></label>
         <label class="field">Email<input type="email" name="email" value="{{ old('email', $member->email) }}" required maxlength="255"></label>
         <label class="field">วันนัดหมาย<input type="date" name="appointment_date" value="{{ old('appointment_date') }}" min="{{ now('Asia/Bangkok')->toDateString() }}" required></label>
-        <label class="field">เวลานัดหมาย (เวลาไทย)<input type="time" name="appointment_time" value="{{ old('appointment_time') }}" required></label>
+        <label class="field">เวลานัดหมาย<input type="time" name="appointment_time" value="{{ old('appointment_time') }}" required></label>
         <button type="submit">บันทึกข้อมูล</button><a href="{{ route('member.repairs.index') }}">กลับรายการ</a>
     </form>
 @endsection
-
-

@@ -14,8 +14,8 @@
         </div>
         <p id="scan-status" role="status" aria-live="polite"></p>
     </div>
-    <a href="{{ route('admin.activities.attendances.index', $activity) }}">รีเฟรชรายชื่อ</a>
-    <div class="table-wrapper"><table><thead><tr><th>รหัสนักศึกษา</th><th>ชื่อ</th><th>เวลาเช็คชื่อ (เวลาไทย)</th><th>คะแนน</th><th>ผู้เช็คชื่อ</th></tr></thead><tbody>
+    <a class="activity-action-button" href="{{ route('admin.activities.attendances.index', $activity) }}">รีเฟรชรายชื่อ</a>
+    <div class="table-wrapper"><table><thead><tr><th>รหัสนักศึกษา</th><th>ชื่อ</th><th>เวลาเช็คชื่อ</th><th>คะแนน</th><th>ผู้เช็คชื่อ</th></tr></thead><tbody>
         @forelse ($attendances as $attendance)
             <tr>
                 @can('view', $attendance->user)
@@ -30,8 +30,7 @@
         @endforelse
     </tbody></table></div>
     {{ $attendances->links() }}
-    <a href="{{ route('admin.activities.show', $activity) }}">กลับกิจกรรม</a>
+    <a class="activity-action-button" href="{{ route('admin.activities.show', $activity) }}">กลับกิจกรรม</a>
     <script src="{{ asset('js/vendor/html5-qrcode.min.js') }}" defer></script>
     <script src="{{ asset('js/attendance-scanner.js') }}" defer></script>
 @endsection
-
