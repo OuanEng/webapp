@@ -48,9 +48,15 @@ class UserPolicy
             && $actor->id !== $member->id && in_array($member->role, ['user', 'admin'], true);
     }
 
+    public function resetPassword(User $actor, User $member): bool
+    {
+        return $actor->is_active && $actor->role === 'superadmin' && $member->role === 'user';
+    }
+
     private function canManageMember(User $actor, User $member): bool
     {
         return $actor->role === 'admin' && $actor->dorm_id !== null
             && $member->role === 'user' && $actor->dorm_id === $member->dorm_id;
     }
 }
+

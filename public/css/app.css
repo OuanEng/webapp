@@ -98,3 +98,25 @@ pre { white-space: pre-wrap; overflow-wrap: anywhere; }
 .dashboard-left-column .dashboard-section:last-child { align-self: stretch; }
 @media (max-width: 600px) { .dashboard-left-column { grid-template-rows: auto auto; gap: 15px; } }
 
+
+.actions a.member-action-button { display: inline-flex; align-items: center; justify-content: center; min-height: 42px; padding: 8px 15px; border: 1px solid #a73d25; border-radius: 3px; color: #fff; background: #a73d25; font: inherit; text-decoration: none; }
+.actions a.member-action-button:hover { background: #87301d; }
+
+.content a.activity-action-button { display: inline-flex; align-items: center; justify-content: center; min-height: 42px; padding: 8px 15px; border: 1px solid #a73d25; border-radius: 3px; color: #fff; background: #a73d25; font: inherit; text-decoration: none; }
+.content a.activity-action-button:hover { background: #87301d; }
+
+.activity-page-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; margin-bottom: 25px; }
+.activity-page-header h1 { margin-bottom: 5px; }
+.activity-page-header p { margin: 0; color: #666; }
+.activity-block { border-top: 1px solid #ddd; margin-top: 25px; padding-top: 20px; }
+.activity-block h2 { font-size: 20px; margin-bottom: 15px; }
+.activity-block h2 small { margin-left: 12px; font-size: 14px; font-weight: normal; color: #666; }
+.activity-filters { margin: 0; }
+.activity-muted { color: #666; font-size: 13px; }
+.activity-status { display: inline-block; padding: 4px 8px; border: 1px solid #ccc; background: #f2f2f2; white-space: nowrap; }
+.activity-status-open { color: #276127; border-color: #bfdcbf; background: #edf8ed; }
+.activity-status-cancelled { color: #a22; border-color: #e5baba; background: #fff0f0; }
+.activity-status-closed { color: #555; background: #eee; }
+.activity-detail-grid { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 12px 20px; }
+.activity-detail-grid dd { margin: 0; }
+@media (max-width: 600px) { .activity-detail-grid { grid-template-columns: 1fr; gap: 4px; } .activity-detail-grid dd { margin-bottom: 15px; } }

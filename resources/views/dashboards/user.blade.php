@@ -24,7 +24,7 @@
 <section class="dashboard-section">
         <h2>กิจกรรมที่เปิดอยู่</h2>
         @forelse ($upcoming as $activity)
-            <p>{{ $activity->title }} / {{ $activity->starts_at->timezone('Asia/Bangkok')->format('d/m/Y H:i') }} (เวลาไทย) / {{ $activity->location }} / {{ $activity->score }} คะแนน</p>
+            <p>{{ $activity->title }} / {{ $activity->starts_at->timezone('Asia/Bangkok')->format('d/m/Y H:i') }} / {{ $activity->location }} / {{ $activity->score }} คะแนน</p>
         @empty
             <p>ยังไม่มีกิจกรรมเปิดให้เข้าร่วมตามปีที่เลือก</p>
         @endforelse
@@ -58,6 +58,7 @@
         <a href="{{ route('member.finance', request()->only('academic_year_id')) }}">ดูการเงินที่เปิดเผย</a>
     </section>
 @endsection
+
 
 
 

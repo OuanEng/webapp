@@ -8,7 +8,7 @@
     </select>
     <button>ค้นหา / กรอง</button><a href="{{ url()->current() }}">ล้างตัวกรอง</a>
 </form>
-<div class="table-wrapper"><table><thead><tr><th>ผู้แจ้ง / ห้อง</th><th>ประเภท / รายละเอียด</th><th>นัดหมาย (เวลาไทย)</th><th>สถานะ</th><th>ดูข้อมูล</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>ผู้แจ้ง / ห้อง</th><th>ประเภท / รายละเอียด</th><th>นัดหมาย</th><th>สถานะ</th><th>ดูข้อมูล</th></tr></thead><tbody>
     @forelse ($repairs as $repair)
         <tr><td>{{ $repair->reporter_name }} / {{ $repair->room_label }}</td><td>{{ App\Models\RepairRequest::CATEGORIES[$repair->category] ?? $repair->category }}<br>{{ Illuminate\Support\Str::limit($repair->description, 100) }}</td><td>{{ $repair->appointment_date->format('d/m/Y') }} {{ substr($repair->appointment_time, 0, 5) }}</td><td>{{ App\Models\RepairRequest::STATUS_LABELS[$repair->status] ?? $repair->status }}</td><td><a href="{{ route($isAdmin ? 'admin.repairs.show' : 'member.repairs.show', $repair) }}">รายละเอียด</a></td></tr>
     @empty
@@ -16,3 +16,4 @@
     @endforelse
 </tbody></table></div>
 {{ $repairs->links() }}
+

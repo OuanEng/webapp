@@ -160,7 +160,7 @@ class UserController extends Controller
             'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($member?->id)],
             'phone' => ['nullable', 'string', 'max:30', 'regex:/^[0-9+() .-]+$/'],
             'dorm_id' => [$role === 'superadmin' ? 'nullable' : 'required', 'integer', Rule::exists('dorms', 'id')],
-            'room_id' => [$role === 'user' ? 'required' : 'nullable', 'integer', Rule::exists('rooms', 'id')],
+            'room_id' => [$role === 'user' && $member === null ? 'required' : 'nullable', 'integer', Rule::exists('rooms', 'id')],
             'is_active' => ['required', 'boolean'],
             'role' => ['prohibited'],
             'google_id' => ['prohibited'],

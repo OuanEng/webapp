@@ -43,7 +43,7 @@ class RoomController extends Controller
             $records->where('floor_id', $filters['floor_id']);
         }
 
-        return view('admin.rooms.index', ['records' => $records->orderBy('id')->paginate(20)->withQueryString(), 'parents' => $this->parentOptions($request)]);
+        return view('admin.rooms.index', ['records' => $records->orderBy('occupied_count')->orderBy('id')->paginate(20)->withQueryString(), 'parents' => $this->parentOptions($request)]);
     }
 
     public function create(Request $request): View
