@@ -23,3 +23,8 @@
         <button type="submit">บันทึกข้อมูล</button><a class="activity-action-button" href="{{ route('admin.activities.index') }}">กลับรายการ</a>
     </form>
 @endsection
+
+
+
+
+

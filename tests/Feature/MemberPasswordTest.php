@@ -44,3 +44,4 @@ test('wrong old password or mismatched confirmation cannot change password', fun
     ['wrongpass', 'wrongpass', 'current_password'],
     ['password', 'different', 'current_password_confirmation'],
 ]);
+

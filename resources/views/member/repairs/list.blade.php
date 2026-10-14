@@ -16,3 +16,4 @@
     @endforelse
 </tbody></table></div>
 {{ $repairs->links() }}
+

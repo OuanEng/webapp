@@ -58,3 +58,7 @@
         <a href="{{ route('member.finance', request()->only('academic_year_id')) }}">ดูการเงินที่เปิดเผย</a>
     </section>
 @endsection
+
+
+
+

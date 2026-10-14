@@ -26,7 +26,6 @@
 <p class="nav-group-label">จัดการหอพัก</p>
                 <a href="{{ route('admin.users.index') }}" @if(request()->routeIs('admin.users.*')) aria-current="page" @endif>สมาชิก</a>
                 <a href="{{ route('admin.dorms.index') }}" @if(request()->routeIs('admin.dorms.*')) aria-current="page" @endif>หอพัก</a>
-                <a href="{{ route('admin.buildings.index') }}" @if(request()->routeIs('admin.buildings.*')) aria-current="page" @endif>อาคาร</a>
                 <a href="{{ route('admin.floors.index') }}" @if(request()->routeIs('admin.floors.*')) aria-current="page" @endif>ชั้น</a>
                 <a href="{{ route('admin.rooms.index') }}" @if(request()->routeIs('admin.rooms.*')) aria-current="page" @endif>ห้องพัก</a>
                 <a href="{{ route('admin.activities.index') }}" @if(request()->routeIs('admin.activities.*')) aria-current="page" @endif>จัดการกิจกรรม</a>
@@ -52,3 +51,9 @@
     </main></div></div>
 </body>
 </html>
+
+
+
+
+
+

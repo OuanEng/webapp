@@ -43,3 +43,4 @@ class StudentLoginController extends Controller
         return redirect()->route('dashboard');
     }
 }
+

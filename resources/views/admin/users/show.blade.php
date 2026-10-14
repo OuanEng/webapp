@@ -16,9 +16,9 @@
         @can('resetPassword', $member)<a class="member-action-button" href="{{ route('superadmin.users.password.edit', $member) }}">ตั้งรหัสผ่านใหม่</a>@endcan
         <a class="member-action-button" href="{{ route('admin.users.scores.index', $member) }}">ประวัติ / ปรับคะแนน</a>
         @can('update', $member)<a class="member-action-button" href="{{ route('admin.users.edit', $member) }}">แก้ไข</a>@endcan
-        @can('delete', $member)
-            <form method="POST" action="{{ route('admin.users.destroy', $member) }}" onsubmit="return confirm('ยืนยันการลบสมาชิก?')">@csrf @method('DELETE')<button type="submit">ลบสมาชิก</button></form>
-        @endcan
+
         <a class="member-action-button" href="{{ route('admin.users.index') }}">กลับรายการ</a>
     </div>
 @endsection
+
+

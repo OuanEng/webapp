@@ -34,3 +34,6 @@
     <script src="{{ asset('js/vendor/html5-qrcode.min.js') }}" defer></script>
     <script src="{{ asset('js/attendance-scanner.js') }}" defer></script>
 @endsection
+
+
+

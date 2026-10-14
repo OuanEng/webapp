@@ -6,3 +6,4 @@
     @endforelse
 </tbody></table></div>
 {{ $histories->links() }}
+

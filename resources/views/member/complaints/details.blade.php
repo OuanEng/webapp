@@ -7,3 +7,4 @@
     <dt>วันที่แจ้ง</dt><dd>{{ $complaint->created_at->timezone('Asia/Bangkok')->format('d/m/Y H:i') }}</dd>
     <dt>อัปเดตล่าสุด</dt><dd>{{ $complaint->updated_at->timezone('Asia/Bangkok')->format('d/m/Y H:i') }}</dd>
 </dl>
+

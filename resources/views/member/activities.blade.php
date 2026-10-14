@@ -13,3 +13,5 @@
     @endforelse
     {{ $activities->links() }}
 @endsection
+
+

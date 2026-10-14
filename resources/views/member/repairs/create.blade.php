@@ -20,3 +20,6 @@
         <button type="submit">บันทึกข้อมูล</button><a href="{{ route('member.repairs.index') }}">กลับรายการ</a>
     </form>
 @endsection
+
+
+

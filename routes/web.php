@@ -81,3 +81,6 @@ Route::prefix('superadmin')->name('superadmin.')->middleware(['auth', 'active', 
     Route::get('/audit-logs/{auditLog}', [AuditLogController::class, 'show'])->name('audit.show');
     Route::patch('/users/{user}/role', [AdminRoleController::class, 'update'])->name('users.role');
 });
+
+
+

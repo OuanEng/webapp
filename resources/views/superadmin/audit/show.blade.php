@@ -14,3 +14,4 @@
     <pre style="white-space:pre-wrap;overflow-wrap:anywhere">{{ $log->new_values === null ? 'ไม่มีข้อมูลใหม่ (เช่น การลบรายการ)' : json_encode(App\Models\AuditLog::safeValues($log->new_values), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) }}</pre>
     <a href="{{ route('superadmin.audit.index') }}">กลับรายการ Audit Log</a>
 @endsection
+

@@ -26,3 +26,4 @@
     @endif
     <a href="{{ route('admin.finance.index') }}">กลับรายการ</a>
 @endsection
+

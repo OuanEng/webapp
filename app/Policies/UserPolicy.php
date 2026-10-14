@@ -59,3 +59,4 @@ class UserPolicy
             && $member->role === 'user' && $actor->dorm_id === $member->dorm_id;
     }
 }
+

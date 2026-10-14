@@ -13,3 +13,4 @@
     </tbody></table></div>
     {{ $complaints->links() }}
 @endsection
+

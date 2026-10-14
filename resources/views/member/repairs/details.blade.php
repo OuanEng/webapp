@@ -12,3 +12,4 @@
     <dt>วันที่แจ้ง</dt><dd>{{ $repair->created_at->timezone('Asia/Bangkok')->format('d/m/Y H:i') }}</dd>
     <dt>อัปเดตล่าสุด</dt><dd>{{ $repair->updated_at->timezone('Asia/Bangkok')->format('d/m/Y H:i') }}</dd>
 </dl>
+
